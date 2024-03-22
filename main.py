@@ -14,8 +14,9 @@ def generate_schedule():
 
     generated_schedule = []
     for entry in schedule_generator.schedule:
-        day, time, course_name, session_type, section_group, room = entry
+        program_year, day, time, course_name, session_type, section_group, room = entry
         generated_schedule.append({
+            "program_year": program_year,
             "day": day,
             "time": time,
             "course_name": course_name,
