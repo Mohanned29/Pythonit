@@ -12,7 +12,6 @@ def generate_schedule():
     schedule_generator = ScheduleGenerator(rooms, days, times, courses, sections)
     schedule_generator.generate_schedule()
 
-    # Instead of printing each entry, gather them into a list and return it
     generated_schedule = []
     for entry in schedule_generator.schedule:
         day, time, course_name, session_type, section_group, room = entry

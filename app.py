@@ -1,9 +1,9 @@
 from flask import Flask, jsonify
-from main import generate_schedule  # Ensure this matches the name of your Python script
+from main import generate_schedule
 
 app = Flask(__name__)
 
-@app.route('/api/schedule', methods=['GET'])  # Using GET for simplicity; adjust as needed
+@app.route('/api/schedule', methods=['GET'])
 def get_schedule():
     schedule = generate_schedule()
     return jsonify(schedule)
