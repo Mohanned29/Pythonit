@@ -1,0 +1,40 @@
+{
+  "Amphi": [
+    {"name": "Amphi A", "availability": [["Monday", "8:00 - 09:30"], ["Tuesday", "14:40 - 16:10"]]},
+    {"name": "Amphi B", "availability": [["Wednesday", "11:20 - 12:50"], ["Thursday", "13:00 - 14:30"]]},
+    {"name": "Amphi C", "availability": [["Thursday", "8:00 - 09:30"], ["Saturday", "09:40 - 11:10"]]},
+    {"name": "Amphi D", "availability": [["Sunday", "14:40 - 16:10"], ["Monday", "13:00 - 14:30"]]}
+  ],
+
+
+  "TD Room": [
+    {"name": "Salle 140", "availability": [["Saturday", "8:00 - 09:30"], ["Sunday", "11:20 - 12:50"]]},
+    {"name": "Salle 142", "availability": [["Monday", "14:40 - 16:10"], ["Tuesday", "09:40 - 11:10"]]},
+    {"name": "Salle 144", "availability": [["Wednesday", "13:00 - 14:30"], ["Thursday", "11:20 - 12:50"]]},
+    {"name": "Salle 146", "availability": [["Friday", "8:00 - 09:30"], ["Saturday", "14:40 - 16:10"]]},
+    
+    {"name": "Salle 150", "availability": [["Sunday", "13:00 - 14:30"], ["Monday", "11:20 - 12:50"]]},
+    {"name": "Salle 152", "availability": [["Tuesday", "14:40 - 16:10"], ["Wednesday", "09:40 - 11:10"]]},
+    {"name": "Salle 154", "availability": [["Thursday", "13:00 - 14:30"], ["Friday", "11:20 - 12:50"]]},
+    {"name": "Salle 156", "availability": [["Saturday", "09:40 - 11:10"], ["Sunday", "14:40 - 16:10"]]},
+    
+    {"name": "Salle 210", "availability": [["Monday", "8:00 - 09:30"], ["Tuesday", "11:20 - 12:50"]]},
+    {"name": "Salle 212", "availability": [["Wednesday", "14:40 - 16:10"], ["Thursday", "09:40 - 11:10"]]},
+    {"name": "Salle 214", "availability": [["Friday", "13:00 - 14:30"], ["Saturday", "11:20 - 12:50"]]},
+    {"name": "Salle 216", "availability": [["Sunday", "09:40 - 11:10"], ["Monday", "14:40 - 16:10"]]},
+  
+    {"name": "Salle 250", "availability": [["Tuesday", "13:00 - 14:30"], ["Wednesday", "11:20 - 12:50"]]},
+    {"name": "Salle 252", "availability": [["Thursday", "14:40 - 16:10"], ["Friday", "09:40 - 11:10"]]},
+    {"name": "Salle 254", "availability": [["Saturday", "13:00 - 14:30"], ["Sunday", "11:20 - 12:50"]]},
+    {"name": "Salle 256", "availability": [["Monday", "09:40 - 11:10"], ["Tuesday", "14:40 - 16:10"]]}
+  ],
+  
+
+
+  "TP Room": [
+    {"name": "Lab 120", "availability": [["Saturday", "08:00 - 09:30"],["Saturday", "09:40 - 11:10"],["Saturday", "11:20 - 12:50"], ["Saturday", "13:00 - 14:30"]]},
+    {"name": "Lab 121", "availability": [["Monday", "09:40 - 11:10"], ["Tuesday", "13:00 - 14:30"]]},
+    {"name": "Lab 122", "availability": [["Wednesday", "8:00 - 09:30"], ["Thursday", "14:40 - 16:10"]]}
+  ]
+
+}
