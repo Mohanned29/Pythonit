@@ -73,21 +73,18 @@ class ScheduleGenerator:
                     for course in self.courses
                 }
 
+                scheduled_this_week = {course: {session_type: False for session_type in ['lectures', 'TD', 'TP']}
+                                    for course in self.courses}
+
                 for course_name, sessions in self.courses.items():
-                    for session_type in sessions:
+                    for session_type in ['lectures', 'TD', 'TP']:
                         if sessions[session_type] is None:
                             continue
-                        if session_type == "lectures":
-                            for day in self.days:
-                                for time in self.times:
-                                    if self.is_section_available(program_year, section, day, time, session_type):
-                                        available_room = self.find_available_room(sessions[session_type], day, time)
-                                        if available_room:
-                                            self.schedule.append((program_year, day, time, course_name, session_type, section, available_room))
-                                            self.mark_section_unavailable(program_year, section, day, time, session_type)
-                                            scheduled_sessions[program_year][section][course_name]["lectures"] = True
-                                            break
-                                if self.schedule_session(program_year, course_name, session_type, section, day, time):
-                                    break
+                        for day in self.days:
+                            for time in self.times:
+                                if not scheduled_this_week[course_name][session_type]:
+                                    if self.schedule_session(program_year, course_name, session_type, section, day, time):
+                                        scheduled_this_week[course_name][session_type] = True
+                                        break
 
         return scheduled_sessions

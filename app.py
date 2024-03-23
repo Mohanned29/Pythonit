@@ -5,12 +5,12 @@ app = Flask(__name__)
 
 @app.route('/api/schedule', methods=['GET'])
 def get_schedule():
-    # This endpoint remains for backward compatibility or general use
+
     return jsonify({"message": "Please specify a section for a detailed schedule."})
 
 @app.route('/api/select_schedule', methods=['GET'])
 def select_schedule():
-    section_key = request.args.get('section_key')  # Expecting format "2nd Year CS GTR - A"
+    section_key = request.args.get('section_key')
     if section_key:
         schedule = generate_schedule(section_key)
         return jsonify(schedule)
