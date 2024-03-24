@@ -7,7 +7,6 @@ def file_exists(filename):
     return os.path.isfile(filename)
 
 
-
 def get_course_filename(program_year, section):
     """Determine the course CSV filename based on program year and specialization."""
     filename_map = {
@@ -20,9 +19,7 @@ def get_course_filename(program_year, section):
     }
 
     key = program_year
-
     return filename_map.get(key)
-
 
 
 def generate_schedule(section_key):
