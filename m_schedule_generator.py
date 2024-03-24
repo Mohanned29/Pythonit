@@ -77,7 +77,7 @@ class ScheduleGenerator:
 
     def find_best_room_and_time(self, program_year, course_name, session_type, section):
         best_option = None
-        best_score = float('inf') 
+        best_score = float('inf')
 
         
         for day in self.days:
