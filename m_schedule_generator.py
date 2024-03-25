@@ -26,15 +26,20 @@ class ScheduleGenerator:
             for py, sects in self.sections.items()
         }
 
+    #tkhlik t3rf ida une seance has been scheduled
     def check_course_schedule_status(self, program_year, section, course_name, session_type):
         return self.course_schedule_status[course_name][session_type]
 
+    #done by gpt : dir update lel status te3 kch seance
     def update_course_schedule_status(self, program_year, section, course_name, session_type):
         self.course_schedule_status[course_name][session_type] = True
 
+    #it checks if the tuple (day, time) kayen fel set of available slots for the given section within the section_availability dictionary
     def is_section_available(self, program_year, section, day, time):
         return (day, time) in self.section_availability[program_year][section]
 
+
+    #based on the availability information in the room_availability dictionary tklhik tsib avalaible room
     def find_available_room(self, room_type, day, time):
         print(f"Looking for {room_type} on {day} at {time}")
         if room_type not in self.room_availability:
@@ -46,15 +51,13 @@ class ScheduleGenerator:
         return None
 
 
-
+    #handles the process of scheduling a session for a course and section at a specified day and time respecting les conditions
     def schedule_session(self, program_year, course_name, session_type, section, day, time):
         if self.check_course_schedule_status(program_year, section, course_name, session_type):
             return False
-
         room_type = self.courses[course_name].get(session_type)
         if room_type is None:
             return False
-
         room = self.find_available_room(room_type, day, time)
         if room:
             self.schedule.append((program_year, section, course_name, session_type, day, time, room))
@@ -64,6 +67,8 @@ class ScheduleGenerator:
             return True
         return False
 
+
+    #it schedule sessions for courses where necessary 
     def generate_schedule(self):
         for program_year, sections in self.sections.items():
             for section in sections.keys():
@@ -75,6 +80,9 @@ class ScheduleGenerator:
                                 day, time, room = best_option
                                 self.schedule_session(program_year, course_name, session_type, section, day, time)
 
+
+
+    #done by gpt : khatini
     def find_best_room_and_time(self, program_year, course_name, session_type, section):
         best_option = None
         best_score = float('inf')
