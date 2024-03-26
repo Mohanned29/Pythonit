@@ -1,30 +1,20 @@
-Detailed Schedule Generator Class explanation:
+Scheduling Algorithm Steps:
 
-The Schedule Generator automates creating schedules for educational institutions. It manages rooms, courses, and sections to ensure efficient use of resources without conflicts. Here's a detailed breakdown:
+1-Read Input Data: The main.py file reads sections from sections.json and rooms from rooms.json. It also reads course information from CSV files based on the program year and section.
 
-1. initialization (__init__):
+2-Generate Schedule: When a request is received through the Flask app to generate a schedule for a particular section, the generate_schedule function is called with the section key.
 
-- Initializes instance with provided data: rooms, days, times, courses, sections.
-- Prepares `room_availability` dictionary, structured by room type, then room name, with each room's availability times converted into tuples for easy management.
-- Loops through each room type and each room within that type to set up this structure.
-- Initializes `section_availability` with every section assumed available at all times initially, using nested loops to create a list of all possible day-time combinations for each section.
+3-Return Schedule: The generated schedule is then returned as a JSON response by the Flask app.
 
-2. Finding an Available Room (find_available_room):
-- Given a room type, day, and time, iterates through all rooms of that type to find one that's available, demonstrating the use of loops to check each room's availability.
 
-3. Checking if a Section is Available (is_section_available):
-- Checks if a given section (or all sections for lectures) is available at a specified time. Uses conditional logic and loops to check through all relevant sections' availability for lectures.
 
-4. Marking a Section Unavailable (mark_section_unavailable):
-- Marks a section as busy after scheduling a session in it. For lectures, it iterates through all sections to mark them all as unavailable for the given time, reflecting the shared nature of lectures.
+File-Reading Functions:
+1-DataReader: This component reads JSON and CSV files to fetch the rooms, sections, and course information.
 
-5. Scheduling a Session (schedule_session):
-- Attempts to schedule a session by first checking section availability, then finding an available room. Upon success, it adds the session to the schedule and updates room and section availability. This method showcases conditional checks and the updating of multiple structures based on the outcome.
 
-6. Generating the Full Schedule (generate_schedule):
-- The heart of the class, this method systematically attempts to schedule all sessions for all courses. It employs nested loops and conditionals to:
-  - Ensure each course session (lecture, TD, TP) is scheduled exactly once per section/group.
-  - Iterate over each course and section, checking and updating availabilities as it goes.
-- This process demonstrates complex logic handling, with multiple levels of iteration (over days, times, courses, and sections) to methodically fill the schedule while respecting all constraints.
 
-This detailed explanation highlights the iterative and conditional logic used throughout the Schedule Generator to ensure an efficient, conflict-free scheduling process.
+Web Application Interface:
+1-The /api/schedule endpoint gives a prompt to specify a section for the schedule, while /api/select_schedule expects a section_key query parameter and returns the generated schedule for that section
+
+
+

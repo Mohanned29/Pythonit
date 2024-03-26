@@ -1,7 +1,22 @@
 from flask import Flask, jsonify, request
+from flask_login import LoginManager
+from auth import auth_bp
 from main import generate_schedule
 
 app = Flask(__name__)
+
+app.secret_key = 'abcdefghijklmnopqrstuvwxyz'
+
+#chatgpt helped:
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+app.register_blueprint(auth_bp)
+
+@login_manager.user_loader
+def load_user(user_id):
+    from models import User
+    return User.get(user_id)
 
 @app.route('/api/schedule', methods=['GET'])
 def get_schedule():
