@@ -1,33 +1,70 @@
-
 {
-  "2nd Year Ingenieur CS": {
-    "A": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "B": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"]
+  "2INGA": {
+    "schedule": [],
+    "capacity": 50
   },
-  "1st Year Ingenieur CS": {
-    "A": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "B": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "C": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"]
+  "2INGB": {
+    "schedule": [],
+    "capacity": 60
   },
-  "1st Year CS LMD": {
-    "1": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "2": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "3": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "4": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "5": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "6": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"]
+  "1INGA": {
+    "schedule": [],
+    "capacity": 50
   },
-  "2nd Year CS ISIL": {
-    "A": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "B": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"]
+  "1INGB": {
+    "schedule": [],
+    "capacity": 60
   },
-  "2nd Year CS ACAD": {
-    "A": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "B": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"],
-    "C": ["Groupe 1", "Groupe 2", "Groupe 3", "Groupe 4"]
+  "1INGC": {
+    "schedule": [],
+    "capacity": 60
   },
-  "2nd Year CS GTR": {
-    "A": ["Groupe 1", "Groupe 2"]
+  "1LMD1": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "1LMD2": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "1LMD3": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "1LMD4": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "1LMD5": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "1LMD6": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "2ISILA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "2ISILB": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "2ACADA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "2ACADB": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "2ACADC": {
+    "schedule": [],
+    "capacity": 60
+  },
+  "2GTRA": {
+    "schedule": [],
+    "capacity": 50
   }
 }
-

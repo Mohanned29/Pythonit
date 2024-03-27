@@ -7,37 +7,64 @@ def file_exists(filename):
     return os.path.isfile(filename)
 
 
-def get_course_filename(program_year, section):
-    """Determine the course CSV filename based on program year and specialization."""
+def get_course_filename(section_key):
+    """Determine the course CSV filename based on the section key."""
     filename_map = {
-        "1st Year Ingenieur CS": "module1ING.csv",
-        "2nd Year Ingenieur CS": "module2ING.csv",
-        "1st Year CS LMD": "module1LMD.csv",
-        "2nd Year CS ISIL": "module2ISIL.csv",
-        "2nd Year CS GTR": "module2GTR.csv",
-        "2nd Year CS ACAD": "module2ACAD.csv"
+        "2INGA": "module2ING.csv",
+        "2INGB": "module2ING.csv",
+        "1INGA": "module1ING.csv",
+        "1INGB": "module1ING.csv",
+        "1INGC": "module1ING.csv",
+        "1LMD1": "module1LMD.csv",
+        "1LMD2": "module1LMD.csv",
+        "1LMD3": "module1LMD.csv",
+        "1LMD4": "module1LMD.csv",
+        "1LMD5": "module1LMD.csv",
+        "1LMD6": "module1LMD.csv",
+        "2ISILA": "module2ISIL.csv",
+        "2ISILB": "module2ISIL.csv",
+        "2ACADA": "module2ACAD.csv",
+        "2ACADB": "module2ACAD.csv",
+        "2ACADC": "module2ACAD.csv",
+        "2GTRA": "module2GTR.csv"
     }
 
-    key = program_year
-    return filename_map.get(key)
+    return filename_map.get(section_key, None)
+
 
 
 def generate_schedule(section_key):
-    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
-    times = ["8:00 - 09:30", "09:40 - 11:10", "11:20 - 12:50", "13:00 - 14:30", "14:40 - 16:10"]
+    if not section_key:
+        return {"error": "Section key not specified"}
 
     sections_data = DataReader.read_json_file('sections.json')
     rooms = DataReader.read_json_file('rooms.json')
 
-    program_year, section = section_key.split(" - ")
-    courses_filename = get_course_filename(program_year, section)
+    if section_key not in sections_data:
+        return {"error": f"Section '{section_key}' not found in the sections data."}
+
+    courses_filename = get_course_filename(section_key)
     if not courses_filename:
-        return {"error": "No course data found for the selected section."}
+        return {"error": f"No course data found for the selected section: {section_key}"}
 
     courses = DataReader.read_courses_csv(courses_filename)
 
-    filtered_sections = {program_year: {section: sections_data[program_year][section]}}
-    schedule_generator = ScheduleGenerator(rooms, days, times, courses, filtered_sections)
-    schedule_generator.generate_schedule()
+    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
+    times = ["8:00 - 09:30", "09:40 - 11:10", "11:20 - 12:50", "13:00 - 14:30", "14:40 - 16:10"]
 
-    return schedule_generator.schedule
+    filtered_sections_data = {section_key: sections_data[section_key]}
+
+    schedule_generator = ScheduleGenerator(rooms, days, times, courses, filtered_sections_data)
+    section_schedule = schedule_generator.generate_schedule()
+
+    section_schedule_filtered = [session for session in section_schedule if session[0] == section_key]
+
+    return section_schedule_filtered
+
+
+
+
+
+
+if __name__ == '__main__':
+    print("This script should be used as an importable module.")
