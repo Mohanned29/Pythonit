@@ -3,12 +3,12 @@ from m_schedule_generator import ScheduleGenerator
 import os
 
 def file_exists(filename):
-    """Check if a file exists in the current directory."""
+    #check if a file exists in the current directory
     return os.path.isfile(filename)
 
 
 def get_course_filename(section_key):
-    """Determine the course CSV filename based on the section key."""
+    #determiner le fichier csv based on section_key:
     filename_map = {
         "2INGA": "module2ING.csv",
         "2INGB": "module2ING.csv",
@@ -28,11 +28,10 @@ def get_course_filename(section_key):
         "2ACADC": "module2ACAD.csv",
         "2GTRA": "module2GTR.csv"
     }
-
     return filename_map.get(section_key, None)
 
 
-
+#generate schedule for a given section key
 def generate_schedule(section_key):
     if not section_key:
         return {"error": "Section key not specified"}

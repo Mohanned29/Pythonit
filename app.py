@@ -38,3 +38,6 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# URL = http://localhost:5000/api/select_schedule?section_key=<SECTION_KEY>
