@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user
 from werkzeug.security import check_password_hash
 from flasgger import Swagger
 from models import User
-from mockdb import get_user_by_username
+from mockdb import get_user_by_username, add_user
 
 auth_bp = Blueprint('auth_bp', __name__)
 
@@ -20,6 +20,22 @@ def login():
         return jsonify({"status": "Logged in"})
     else:
         return jsonify({"status": "Login failed"}), 401
+
+@auth_bp.route('/register', methods=['POST'])
+def register():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+    
+    # Check if the username or password is not provided
+    if not username or not password:
+        return jsonify({"error": "Missing username or password"}), 400
+    
+    # Attempt to add a new user
+    if add_user(username, password):
+        return jsonify({"status": "Registration successful"}), 201
+    else:
+        return jsonify({"error": "User already exists"}), 409
 
 
 @auth_bp.route('/logout')

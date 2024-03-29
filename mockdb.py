@@ -25,6 +25,19 @@ users = {
     'teacher5': {'username': 'teacher5', 'password': hashed_password5, 'id': 5, 'schedule': []},
 }
 
+def add_user(username, password):
+    if username in users:
+        return False  # User already exists
+    user_id = max(users.keys(), default=0) + 1  # Simple user ID increment
+    users[username] = {
+        'username': username,
+        'password': generate_password_hash(password),
+        'id': user_id,
+        'schedule': []
+    }
+    return True
+
+
 def get_user_by_username(username):
     return users.get(username)
 

@@ -66,5 +66,26 @@
   "2GTRA": {
     "schedule": [],
     "capacity": 50
+  },
+  "3GTRA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "3ISILA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "3ISILB": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "3ACADA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "3ACADB": {
+    "schedule": [],
+    "capacity": 50
   }
+
 }
