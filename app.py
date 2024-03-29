@@ -21,8 +21,8 @@ def load_user(user_id):
 
 @app.route('/api/schedule', methods=['GET'])
 def get_schedule():
-
     return jsonify({"message": "Please specify a section for a detailed schedule."})
+
 
 @app.route('/api/select_schedule', methods=['GET'])
 def select_schedule():
@@ -32,6 +32,7 @@ def select_schedule():
         return jsonify(schedule)
     else:
         return jsonify({"error": "Section key not specified"}), 400
+    
 
 @app.route('/')
 def home():
