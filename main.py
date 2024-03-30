@@ -2,9 +2,11 @@ from data_reader import DataReader
 from m_schedule_generator import ScheduleGenerator
 import os
 
+
 def file_exists(filename):
     # Check if a file exists in the current directory
     return os.path.isfile(filename)
+
 
 def get_course_filename(section_key):
     # Determine the CSV file based on section_key
@@ -34,51 +36,36 @@ def get_course_filename(section_key):
     }
     return filename_map.get(section_key, None)
 
-def generate_schedule(section_key):
-    if not section_key:
-        return {"error": "Section key not specified"}
 
+def generate_schedule(section_key, rooms, global_room_schedule):
+    """Generate schedule for a given section key, considering global room schedule."""
     sections_data = DataReader.read_json_file('sections.json')
-    rooms = DataReader.read_json_file('rooms.json')
-
-    if section_key not in sections_data:
-        return {"error": f"Section '{section_key}' not found in the sections data."}
-
-    courses_filename = get_course_filename(section_key)
-    if not courses_filename or not file_exists(courses_filename):
+    course_filename = get_course_filename(section_key)
+    if not course_filename or not file_exists(course_filename):
         return {"error": f"No course data found for the selected section: {section_key}"}
-
-    courses = DataReader.read_courses_csv(courses_filename)
-
+    
+    courses = DataReader.read_courses_csv(course_filename)
     days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
     times = ["8:00 - 09:30", "09:40 - 11:10", "11:20 - 12:50", "13:00 - 14:30", "14:40 - 16:10"]
 
-    filtered_sections_data = {section_key: sections_data[section_key]}
+    schedule_generator = ScheduleGenerator(rooms, days, times, courses, {section_key: sections_data[section_key]})
 
-    schedule_generator = ScheduleGenerator(rooms, days, times, courses, filtered_sections_data)
-    section_schedule_filtered = schedule_generator.generate_schedule()
+    return schedule_generator.generate_schedule(global_room_schedule)
 
-    # New implementation for formatted schedule
-    formatted_schedule = {}
-    year = section_key[0]
-    department = section_key[1:-1]  # Extract the department abbreviation
-    section = section_key[-1]
 
-    formatted_schedule['description'] = f"{year}ème année {department} section {section}:"
-    
-    for day in days:
-        formatted_schedule[day] = []
+def generate_schedules_for_all_sections(rooms, global_room_schedule):
+    sections_data = DataReader.read_json_file('sections.json')
+    all_schedules = {}
 
-    for session in section_schedule_filtered:
-        _, course_name, session_type, day, time, room = session
-        formatted_schedule[day].append({
-            "course_name": course_name,
-            "session_type": session_type,
-            "time": time,
-            "room": room
-        })
-    
-    return formatted_schedule
+    for section_key in sections_data.keys():
+        schedule = generate_schedule(section_key, rooms, global_room_schedule)  # Pass rooms and global_room_schedule
+        all_schedules[section_key] = schedule
+
+    return all_schedules
+
+
 
 if __name__ == '__main__':
-    print("This script should be used as an importable module.")
+    rooms = DataReader.read_json_file('rooms.json')
+    global_room_schedule = {}  # Initialize global room schedule
+    all_schedules = generate_schedules_for_all_sections(rooms, global_room_schedule)  # Pass rooms and global_room_schedule

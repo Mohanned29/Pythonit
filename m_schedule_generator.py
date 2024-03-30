@@ -1,108 +1,90 @@
 import random
 
 class ScheduleGenerator:
-    #initialize the ScheduleGenerator object
     def __init__(self, rooms, days, times, courses, sections):
         self.rooms = rooms
         self.days = days
         self.times = times
         self.courses = courses
         self.sections = sections
-        self.schedule = []
-        self.course_schedule_status = {
-            course: {"lectures": False, "TD": False, "TP": False}
-            for course in courses
+        self.global_room_schedule = {}
+        self.session_to_room_type_map = {
+            'lecture': 'Amphi',
+            'TD': 'TD Room',
+            'TP': 'TP Room'
         }
         self.initialize_availability()
 
-
     def initialize_availability(self):
-        #initialize room and section availability
         self.room_availability = {}
-        for room_type, room_info_list in self.rooms.items():
-            self.room_availability[room_type] = {}
-            for room_info in room_info_list:
+        for room_type, room_list in self.rooms.items():
+            for room_info in room_list:
                 room_name = room_info['name']
-                self.room_availability[room_type][room_name] = {
-                    'availability': set(
-                        tuple(avail) for avail in room_info['availability']
-                    ),
+                self.room_availability[room_name] = {
+                    'availability': set((day, time) for day, time in room_info['availability']),
                     'sessions': [],
                 }
+
         self.section_availability = {}
         for section, details in self.sections.items():
             self.section_availability[section] = set((d, t) for d in self.days for t in self.times)
 
-
-    #check if a section is available at a given day and time
     def is_section_available(self, section, day, time):
         return (day, time) in self.section_availability[section]
-    #return true if section is available and false if not
 
-
-    #find an available room of a given type at a given day and time
-    def find_available_room(self, room_type, day, time):
-        if room_type not in self.room_availability:
+    def find_available_room(self, session_type, day, time, global_room_schedule):
+        room_type = self.session_to_room_type_map.get(session_type)
+        if not room_type:
+            print(f"No valid room type mapping found for session type: {session_type}")
             return None
-        available_rooms = [
-            room_name for room_name, room_info in self.room_availability[room_type].items()
-            if (day, time) in room_info['availability'] and len(room_info['sessions']) < len(self.sections)
-        ]
-        if available_rooms:
-            return random.choice(available_rooms)
+
+        for room_info in self.rooms.get(room_type, []):
+            room_name = room_info['name']
+            if (room_name, day, time) not in global_room_schedule:
+                # Improved logging to understand room selection failures.
+                print(f"Room {room_name} of type {room_type} is available for {session_type} on {day} at {time}")
+                return room_name
+
+        print(f"No available room found for {session_type} on {day} at {time} within type {room_type}")
         return None
-    #returns str or none m3ntha name of the available room, or none if no room is available
 
-
-    #schedule a session for a course
-    def schedule_session(self, course_name, session_type, section, day, time, room):
-        if self.check_course_schedule_status(course_name, session_type):
+    def schedule_session(self, course_name, session_type, section, day, time, room, global_room_schedule):
+        if room and (room, day, time) not in global_room_schedule:
+            # Booking the room in the global schedule
+            global_room_schedule[(room, day, time)] = f"{section} - {course_name} - {session_type}"
+            print(f"Successfully scheduled {course_name} {session_type} for {section} on {day} at {time} in {room}")
+            return True
+        else:
+            print(f"Failed to book {room} for {course_name} {session_type} on {day} at {time} due to conflict or unavailability.")
             return False
-        self.schedule.append((section, course_name, session_type, day, time, room))
-        self.room_availability[self.courses[course_name][session_type]][room]['sessions'].append((day, time))
-        self.section_availability[section].remove((day, time))
-        self.update_course_schedule_status(course_name, session_type)
-        return True
-    #returns bool , true if session is successfully scheduled wlea false ida l3ks
 
+    def generate_schedule(self, global_room_schedule):
+        all_schedules = {}
+        for section in self.sections:
+            section_schedule = []
+            # Track which sessions have been scheduled to prevent duplicates
+            scheduled_sessions = set()
 
-    #generate the schedule for all sections and courses
-    def generate_schedule(self):
-        for section, details in self.sections.items():
-            for course_name, sessions in self.courses.items():
-                for session_type, room_type in sessions.items():
-                    if not self.course_schedule_status[course_name][session_type]:
-                        best_option = self.find_best_room_and_time(course_name, session_type, section)
-                        if best_option:
-                            day, time, room = best_option
-                            self.schedule_session(course_name, session_type, section, day, time, room)
-        return self.schedule
-    #returns list li fiha el generated schedule
+            for course_name, session_types in self.courses.items():
+                for session_type in session_types:
+                    session_key = f"{course_name} {session_type}"
 
-
-    #find the best available room and time for a session
-    def find_best_room_and_time(self, course_name, session_type, section):
-        best_option = None
-        best_score = float('inf')
-        for day in self.days:
-            for time in self.times:
-                if self.is_section_available(section, day, time):
-                    room = self.find_available_room(self.courses[course_name][session_type], day, time)
-                    if room:
-                        score = self.days.index(day) * 100 + self.times.index(time)
-                        if score < best_score:
-                            best_score = score
-                            best_option = (day, time, room)
-        return best_option
-    #returns tuple or None li hiya el best option of (day, time, room) tuple , wela yrj3 None if no option is available
-
-
-    #check if a session is already scheduled
-    def check_course_schedule_status(self, course_name, session_type):
-        return self.course_schedule_status[course_name][session_type]
-    #yrj3 bool , true ida its scheduled deja w false fel contraire
-
-
-    #update the scheduled status of a session
-    def update_course_schedule_status(self, course_name, session_type):
-        self.course_schedule_status[course_name][session_type] = True
+                    if session_key not in scheduled_sessions:
+                        for day in self.days:
+                            for time in self.times:
+                                if self.is_section_available(section, day, time):
+                                    room = self.find_available_room(session_type, day, time, global_room_schedule)
+                                    if room:
+                                        scheduled = self.schedule_session(course_name, session_type, section, day, time, room, global_room_schedule)
+                                        if scheduled:
+                                            section_schedule.append((day, time, room, course_name, session_type))
+                                            scheduled_sessions.add(session_key)
+                                            # Break out of the innermost loop after scheduling a session
+                                            break
+                            if session_key in scheduled_sessions:
+                                # Break out of the day loop if session is scheduled
+                                break
+            
+            all_schedules[section] = section_schedule
+        
+        return all_schedules
