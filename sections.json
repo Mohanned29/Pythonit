@@ -43,6 +43,18 @@
     "schedule": [],
     "capacity": 60
   },
+  "1MATHA": {
+    "schedule": [],
+    "capacity":60
+  },
+  "1MATHB": {
+    "schedule": [],
+    "capacity":60
+  },
+  "1MATHC": {
+    "schedule": [],
+    "capacity":60
+  },
   "2ISILA": {
     "schedule": [],
     "capacity": 50
@@ -84,6 +96,10 @@
     "capacity": 50
   },
   "3ACADB": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4HPCA": {
     "schedule": [],
     "capacity": 50
   }

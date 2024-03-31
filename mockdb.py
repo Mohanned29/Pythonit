@@ -27,8 +27,8 @@ users = {
 
 def add_user(username, password):
     if username in users:
-        return False  # User already exists
-    user_id = max(users.keys(), default=0) + 1  # Simple user ID increment
+        return False
+    user_id = max(users.keys(), default=0) + 1
     users[username] = {
         'username': username,
         'password': generate_password_hash(password),

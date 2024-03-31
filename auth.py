@@ -26,12 +26,10 @@ def register():
     data = request.json
     username = data.get('username')
     password = data.get('password')
-    
-    # Check if the username or password is not provided
+
     if not username or not password:
         return jsonify({"error": "Missing username or password"}), 400
-    
-    # Attempt to add a new user
+
     if add_user(username, password):
         return jsonify({"status": "Registration successful"}), 201
     else:

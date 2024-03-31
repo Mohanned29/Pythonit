@@ -4,12 +4,10 @@ import os
 
 
 def file_exists(filename):
-    # Check if a file exists in the current directory
     return os.path.isfile(filename)
 
 
 def get_course_filename(section_key):
-    # Determine the CSV file based on section_key
     filename_map = {
         "2INGA": "module2ING.csv",
         "2INGB": "module2ING.csv",
@@ -58,7 +56,7 @@ def generate_schedules_for_all_sections(rooms, global_room_schedule):
     all_schedules = {}
 
     for section_key in sections_data.keys():
-        schedule = generate_schedule(section_key, rooms, global_room_schedule)  # Pass rooms and global_room_schedule
+        schedule = generate_schedule(section_key, rooms, global_room_schedule)
         all_schedules[section_key] = schedule
 
     return all_schedules
@@ -68,4 +66,4 @@ def generate_schedules_for_all_sections(rooms, global_room_schedule):
 if __name__ == '__main__':
     rooms = DataReader.read_json_file('rooms.json')
     global_room_schedule = {}  # Initialize global room schedule
-    all_schedules = generate_schedules_for_all_sections(rooms, global_room_schedule)  # Pass rooms and global_room_schedule
+    all_schedules = generate_schedules_for_all_sections(rooms, global_room_schedule)
