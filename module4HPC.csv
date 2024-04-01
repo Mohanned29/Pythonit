@@ -1,9 +1,9 @@
-course_name  ,lectures ,TD      ,TP
-RES_PROTO    ,Amphi    ,        ,TP Room
-ARCHI_PARAL  ,Amphi    ,TD Room ,TP Room
-ALGO_REPARTI ,Amphi    ,TD Room ,TP Room
-TECH_PROG    ,Amphi    ,TD Room ,TP room
-BIG DATA     ,Amphi    ,        ,TP Room
-CALCUL_PARAL ,Amphi    ,TD Room ,TP Room
+course_name,lectures,TD,TP
+RES_PROTO,Amphi,,TP Room
+ARCHI_PARAL,Amphi,TD Room,TP Room
+ALGO_REPARTI,Amphi,TD Room,TP Room
+TECH_PROG,Amphi,TD Room,TP room
+BIG DATA,Amphi,,TP Room
+CALCUL_PARAL,Amphi,TD Room,TP Room
 
 

@@ -99,7 +99,31 @@
     "schedule": [],
     "capacity": 50
   },
-  "4HPCA": {
+  "4HPC": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4BIGDATA": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4BIOINFO": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4IL": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4IV": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4SII": {
+    "schedule": [],
+    "capacity": 50
+  },
+  "4SSI": {
     "schedule": [],
     "capacity": 50
   }

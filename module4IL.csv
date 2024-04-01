@@ -1,7 +1,7 @@
-course_name   ,lectures ,TD      ,TP
-COMPLEX       ,Amphi    ,TD Room ,TP Room
-SE            ,Amphi    ,TD Room ,TP Room
-GP            ,Amphi    ,TD Room ,TP Room
-BDA           ,Amphi    ,TD Room ,TP Room
-WEB_AVANCEE   ,Amphi    ,TD Room ,TP Room
-MEPS          ,Amphi    ,TD Room ,TP Room
+course_name,lectures,TD,TP
+COMPLEX,Amphi,TD Room,TP Room
+SE,Amphi,TD Room,TP Room
+GP,Amphi,TD Room,TP Room
+BDA,Amphi,TD Room,TP Room
+WEB_AVANCEE,Amphi,TD Room,TP Room
+MEPS,Amphi,TD Room,TP Room

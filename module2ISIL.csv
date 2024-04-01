@@ -1,7 +1,7 @@
-course_name ,lectures ,TD      ,TP
-GL          ,Amphi    ,TD Room ,TP Room
-BD          ,Amphi    ,        ,TP Room
-SYS         ,Amphi    ,        ,TP Room
-ARCHI       ,Amphi    ,TD Room ,TP Room
-THG         ,Amphi    ,TD Room ,
-WEB         ,Amphi    ,        ,TP Room
+course_name,lectures,TD,TP
+GL,Amphi,TD Room,TP Room
+BD,Amphi,,TP Room
+SYS,Amphi,,TP Room
+ARCHI,Amphi,TD Room,TP Room
+THG,Amphi,TD Room,
+WEB,Amphi,,TP Room

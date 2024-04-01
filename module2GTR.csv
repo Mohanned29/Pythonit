@@ -1,8 +1,8 @@
-course_name ,lectures ,TD      ,TP
-SYS         ,Amphi    ,        ,TP Room
-TCP         ,Amphi    ,TD Room ,TP Room
-ANT         ,Amphi    ,TD Room ,TP Room
-WEB         ,Amphi    ,        ,TP Room
-NIR         ,Amphi    ,        ,
-SIG         ,Amphi    ,TD Room ,TP Room
-MICPROC     ,Amphi    ,TD Room ,TP Room
+course_name,lectures,TD,TP
+SYS,Amphi,,TP Room
+TCP,Amphi,TD Room,TP Room
+ANT,Amphi,TD Room,TP Room
+WEB,Amphi,,TP Room
+NIR,Amphi,,
+SIG,Amphi,TD Room,TP Room
+MICPROC,Amphi,TD Room,TP Room

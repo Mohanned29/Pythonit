@@ -1,6 +1,6 @@
-course_name ,lectures ,TD      ,TP
-ARCHI       ,Amphi    ,TD Room ,TP Room
-POO         ,Amphi    ,TD Room ,TP Room
-SYS         ,Amphi    ,TD Room ,TP Room
-THL         ,Amphi    ,TD Room ,
-BDD         ,Amphi    ,TD Room ,TP Room
+course_name,lectures,TD,TP
+ARCHI,Amphi,TD Room,TP Room
+POO,Amphi,TD Room,TP Room
+SYS,Amphi,TD Room,TP Room
+THL,Amphi,TD Room,
+BDD,Amphi,TD Room,TP Room

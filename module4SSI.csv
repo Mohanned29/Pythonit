@@ -1,9 +1,9 @@
-course_name ,lectures ,TD      ,TP
-CALG        ,Amphi    ,TD Room ,TP Room
-SYEX        ,Amphi    ,TD Room ,TP Room
-ARIN        ,Amphi    ,TD Room ,TP Room
-VTBD        ,Amphi    ,TD Room ,TP Room
-ANGLAIS     ,Amphi    ,        ,TP Room
-INSI        ,Amphi    ,TD Room ,TP Room
-ARMO        ,Amphi    ,TD Room ,TP Room
-AJSI        ,Amphi    ,TD Room ,TP Room
+course_name,lectures,TD,TP
+CALG,Amphi,TD Room,TP Room
+SYEX,Amphi,TD Room,TP Room
+ARIN,Amphi,TD Room,TP Room
+VTBD,Amphi,TD Room,TP Room
+ANGLAIS,Amphi,,TP Room
+INSI,Amphi,TD Room,TP Room
+ARMO,Amphi,TD Room,TP Room
+AJSI,Amphi,TD Room,TP Room

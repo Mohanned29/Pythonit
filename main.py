@@ -20,6 +20,9 @@ def get_course_filename(section_key):
         "1LMD4": "module1LMD.csv",
         "1LMD5": "module1LMD.csv",
         "1LMD6": "module1LMD.csv",
+        "1MATHA":"module1MATH.csv",
+        "1MATHB":"module1MATH.csv",
+        "1MATHC":"module1MATH.csv",
         "2ISILA": "module2ISIL.csv",
         "2ISILB": "module2ISIL.csv",
         "2ACADA": "module2ACAD.csv",
@@ -30,7 +33,13 @@ def get_course_filename(section_key):
         "3ISILB": "module3ISIL.csv",
         "3ACADA": "module3ACAD.csv",
         "3ACADB": "module3ACAD.csv",
-        "3GTRA": "module3GTR.csv"
+        "3GTRA": "module3GTR.csv",
+        "4HPC":"module4HPC.csv",
+        "4BIGDATA":"module4BIGDATA.csv",
+        "4LI":"module4LI.csv",
+        "4IV":"module4IV.csv",
+        "4SII":"module4SII.csv",
+        "4SSI":"module4SSI.csv"
     }
     return filename_map.get(section_key, None)
 
