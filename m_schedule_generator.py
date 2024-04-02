@@ -65,24 +65,47 @@ class ScheduleGenerator:
 
     def generate_schedule(self, global_room_schedule):
         all_schedules = {}
-        for section in self.sections:
+
+        for section_key, section_details in self.sections.items():
             section_schedule = []
-            scheduled_sessions = set()
             for course_name, session_types in self.courses.items():
-                for session_type in session_types:
-                    session_key = f"{course_name} {session_type}"
-                    if session_key not in scheduled_sessions:
-                        for day in self.days:
-                            for time in self.times:
-                                if self.is_section_available(section, day, time):
-                                    room = self.find_available_room(session_type, day, time, global_room_schedule)
-                                    if room:
-                                        scheduled = self.schedule_session(course_name, session_type, section, day, time, room, global_room_schedule)
-                                        if scheduled:
-                                            section_schedule.append((day, time, room, course_name, session_type))
-                                            scheduled_sessions.add(session_key)
-                                            break
-                            if session_key in scheduled_sessions:
-                                break
-            all_schedules[section] = section_schedule
+                for session_type, is_required in session_types.items():
+                    if is_required:
+                        session_scheduled = False
+                        if session_type == 'lecture':
+                            random.shuffle(self.days)
+                            random.shuffle(self.times)
+                            for day in self.days:
+                                for time in self.times:
+                                    if session_scheduled:
+                                        break
+                                    if self.is_section_available(section_key, day, time):
+                                        room = self.find_available_room(session_type, day, time, global_room_schedule)
+                                        if room:
+                                            success = self.schedule_session(course_name, session_type, section_key, day, time, room, global_room_schedule)
+                                            if success:
+                                                section_schedule.append([day, time, room, course_name, session_type])
+                                                session_scheduled = True
+                                                break
+                            if not session_scheduled:
+                                print(f"Unable to schedule lecture for {course_name} in section {section_key}. Check room and time slot availability.")
+                        else:
+                            random.shuffle(self.days)
+                            random.shuffle(self.times)
+                            for day in self.days:
+                                for time in self.times:
+                                    if session_scheduled:
+                                        break
+                                    if self.is_section_available(section_key, day, time):
+                                        room = self.find_available_room(session_type, day, time, global_room_schedule)
+                                        if room:
+                                            success = self.schedule_session(course_name, session_type, section_key, day, time, room, global_room_schedule)
+                                            if success:
+                                                section_schedule.append([day, time, room, course_name, session_type])
+                                                session_scheduled = True
+                                                break
+                            if not session_scheduled:
+                                print(f"Unable to schedule {session_type} for {course_name} in section {section_key}. Check room and time slot availability.")
+            all_schedules[section_key] = section_schedule
+
         return all_schedules

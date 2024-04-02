@@ -2,7 +2,7 @@ course_name,lectures,TD,TP
 ALGO,Amphi,TD Room,TP Room
 ANALYSE,Amphi,TD Room,
 STR,Amphi,TD Room,
-OPM,,,"TP Room"
+OPM,Amphi,,TP Room
 STAT,Amphi,TD Room,
 ELEC,Amphi,TD Room,
 ALGEBRE,Amphi,TD Room,

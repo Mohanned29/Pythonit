@@ -1,7 +1,7 @@
 course_name,lectures,TD,TP
-POO,"Amphi",,"TP Room"
-Reseau,"Amphi","TD Room","TP Room"
-SI,"Amphi","TD Room",
-THG,"Amphi","TD Room",
-THL,"Amphi","TD Room",
-BDD,"Amphi","TD Room",
+POO,Amphi,,TP Room
+Reseau,Amphi,"TD Room",TP Room
+SI,Amphi,"TD Room",
+THG,Amphi,"TD Room",
+THL,Amphi,"TD Room",
+BDD,Amphi,"TD Room",

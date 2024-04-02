@@ -36,7 +36,8 @@ def get_course_filename(section_key):
         "3GTRA": "module3GTR.csv",
         "4HPC":"module4HPC.csv",
         "4BIGDATA":"module4BIGDATA.csv",
-        "4LI":"module4LI.csv",
+        "4BIOINFO":"module4BIOINFO.csv",
+        "4IL":"module4IL.csv",
         "4IV":"module4IV.csv",
         "4SII":"module4SII.csv",
         "4SSI":"module4SSI.csv"
@@ -74,5 +75,5 @@ def generate_schedules_for_all_sections(rooms, global_room_schedule):
 
 if __name__ == '__main__':
     rooms = DataReader.read_json_file('rooms.json')
-    global_room_schedule = {}  # Initialize global room schedule
+    global_room_schedule = {}
     all_schedules = generate_schedules_for_all_sections(rooms, global_room_schedule)
