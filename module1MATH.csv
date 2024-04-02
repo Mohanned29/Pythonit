@@ -1,10 +1,10 @@
 course_name,lectures,TD,TP
-ALGO,Amphi,TD Room,TP Room
-ALGEBRE,Amphi,TD Room,
-STRM,Amphi,TD Room,
-STAT,Amphi,TD Room,
-ANALYSE,Amphi,TD Room,
-OPM,Amphi,TD Room,TP Room
-ELEC,Amphi,TD Room,TP Room
+ALGO,1,TD Room,TP Room
+ALGEBRE,1,TD Room,
+STRM,1,TD Room,
+STAT,1,TD Room,
+ANALYSE,1,TD Room,
+OPM,1,TD Room,TP Room
+ELEC,1,TD Room,TP Room
 
 

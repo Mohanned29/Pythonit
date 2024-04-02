@@ -1,8 +1,8 @@
 course_name,lectures,TD,TP
-ALGO,Amphi,TD Room,TP Room
-ANALYSE,Amphi,TD Room,
-STR,Amphi,TD Room,
-OPM,Amphi,,TP Room
-STAT,Amphi,TD Room,
-ELEC,Amphi,TD Room,
-ALGEBRE,Amphi,TD Room,
+ALGO,1,TD Room,TP Room
+ANALYSE,1,TD Room,
+STR,1,TD Room,
+OPM,1,,TP Room
+STAT,1,TD Room,
+ELEC,1,TD Room,
+ALGEBRE,1,TD Room,

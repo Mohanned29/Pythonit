@@ -1,6 +1,7 @@
 course_name,lectures,TD,TP
-ALGO,Amphi,TD Room,TP Room
-ISE,Amphi,TD Room,TP Room
-LOGIQUE,Amphi,TD Room,
-PROBA,Amphi,TD Room,
-ANALYSE,Amphi,TD Room,
+ALGO,2,TD Room,TP Room
+ISE,1,TD Room,TP Room
+LOGIQUE,1,TD Room,
+PROBA,1,TD Room,
+ANALYSE,2,TD Room,
+ALGEBRE,2,TD Room,
